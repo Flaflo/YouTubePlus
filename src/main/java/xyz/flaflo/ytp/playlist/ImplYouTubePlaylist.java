@@ -22,7 +22,7 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
     /**
      * @param playlistId the YouTube playlist id
      */
-    public ImplYouTubePlaylist(String playlistId) {
+    ImplYouTubePlaylist(String playlistId) {
         this.playlistId = playlistId;
     }
 

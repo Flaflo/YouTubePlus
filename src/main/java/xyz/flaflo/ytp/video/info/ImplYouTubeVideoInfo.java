@@ -19,7 +19,7 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
     /**
      * @param videoId the YouTube video id
      */
-    public ImplYouTubeVideoInfo(String videoId) {
+    ImplYouTubeVideoInfo(String videoId) {
         this.videoId = videoId;
     }
 
