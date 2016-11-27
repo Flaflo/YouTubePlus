@@ -24,7 +24,7 @@ To get it use its getter:
 video.getInfo();
 ```
 
-# Video Info
+# Video Informations
 To get a ``YouTubeVideoInfo`` you can either get it through a ``YouTubeVideo`` as shown above or through the ``YouTubeVideoInfoProvider``:
 ```Java
 final YouTubeVideoInfoProvider infoProvider = new YouTubeVideoInfoProvider("GOOGLE_API_KEY");
