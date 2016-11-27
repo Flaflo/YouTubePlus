@@ -2,7 +2,7 @@
 A YouTube Library
 
 # Playlists
-To parse a ``YouTubePlaylist`` we use the ``YouTubePlaylistParser``:
+To parse a ``YouTubePlaylist`` you use the ``YouTubePlaylistParser``:
 ```Java
 final YouTubePlaylistParser playlistParser = new YouTubePlaylistParser("GOOGLE_API_KEY");
 final YouTubePlaylist playlist = playlistParser.parsePlaylist("PLAYLIST_ID");
@@ -13,7 +13,7 @@ As example you can get all ``YouTubeVideo``s contained in a ``YouTubePlaylist``:
 playlist.getVideos();
 ```
 # Videos
-To parse a ``YouTubeVideo`` we use the ``YouTubeVideoParser``:
+To parse a ``YouTubeVideo`` you use the ``YouTubeVideoParser``:
 ```Java
 final YouTubeVideoParser videoParser = new YouTubeVideoParser("GOOGLE_API_KEY");
 final YouTubeVideo video = videoParser.parseVideo("VIDEO_ID");
