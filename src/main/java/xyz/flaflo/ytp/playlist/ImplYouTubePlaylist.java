@@ -80,6 +80,6 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
 
     @Override
     public String toString() {
-        return "{YouTubePlayList:{" + "videos:" + Arrays.toString(this.getVideos()) + ",id:" + this.getPlaylistId() + "}";
+        return "{YouTubePlaylist:{" + "videos:" + Arrays.toString(this.getVideos()) + ",id:" + this.getPlaylistId() + "}";
     }
 }
