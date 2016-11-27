@@ -17,10 +17,17 @@ final class ImplYouTubeVideo implements YouTubeVideo {
     private final String videoId;
     private YouTubeVideoInfo info;
     
+    /**
+     * @param videoId the video id
+     */
     public ImplYouTubeVideo(String videoId) {
         this.videoId = videoId;
     }
 
+    /**
+     * Parses the video informations
+     * @param key the google api key
+     */
     public void parse(String key) {
         final YouTubeVideoInfoProvider infoProvider = new YouTubeVideoInfoProvider(key);
         this.info = infoProvider.provideYouTubeVideoInfo(this.videoId);
