@@ -11,7 +11,7 @@ import java.nio.charset.Charset;
 /**
  * Utilities for HTTPRequests
  *
- * @author Cydhra
+ * @author Cydhra, Flaflo
  */
 public final class WebUtil {
 
@@ -34,7 +34,7 @@ public final class WebUtil {
 
         try {
             //Create connection
-            URL url = new URL(targetURL);
+            final URL url = new URL(targetURL);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type",
@@ -48,9 +48,9 @@ public final class WebUtil {
             connection.setDoOutput(false);
 
             //Get Response
-            InputStream is = connection.getInputStream();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("windows-1252")));
-            StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
+            final InputStream is = connection.getInputStream();
+            final BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("windows-1252")));
+            final StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
             String line;
             while ((line = rd.readLine()) != null) {
                 response.append(line);
