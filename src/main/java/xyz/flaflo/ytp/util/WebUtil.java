@@ -11,7 +11,7 @@ import java.nio.charset.Charset;
 /**
  * Utilities for HTTPRequests
  *
- * @author Cydhra, Flaflo
+ * @author Cydhra
  */
 public final class WebUtil {
 
