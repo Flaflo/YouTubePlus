@@ -41,12 +41,12 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
         final String infoUrl = String.format(YOUTUBE_API_TITLE, this.videoId, key);
         final JSONObject videoInfos = JSONObject.fromObject(WebUtil.getWebContent(infoUrl));
         final JSONArray items = videoInfos.getJSONArray("items");
-        
+
         for (Object obj : items) {
             if (obj instanceof JSONObject) {
                 final JSONObject item = (JSONObject) obj;
                 final JSONObject snippet = item.getJSONObject("snippet");
-                
+
                 if (snippet.containsKey("title")) {
                     final String title = snippet.getString("title");
                     this.title = title;

@@ -36,7 +36,7 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
 
         final String infoUrl = String.format(YOUTUBE_API_PLAYLIST, playlistId, key);
         final JSONObject playlistInfos = JSONObject.fromObject(WebUtil.getWebContent(infoUrl));
-        
+
         String nextPageToken = playlistInfos.containsKey("nextPageToken") ? playlistInfos.getString("nextPageToken") : "";
 
         final JSONObject pageInfo = playlistInfos.getJSONObject("pageInfo");
@@ -61,7 +61,7 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
                     final JSONObject snippet = item.getJSONObject("snippet");
                     final JSONObject resourceId = snippet.getJSONObject("resourceId");
                     final String videoId = resourceId.getString("videoId");
-                    
+
                     this.videos[parseIndex++] = videoParser.parseYouTubeVideo(videoId);
                 }
             }

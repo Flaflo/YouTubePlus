@@ -18,13 +18,14 @@ public final class YouTubePlaylistParser {
 
     /**
      * Pareses a YouTube playlist by its id
+     *
      * @param playlistId the playlist id
      * @return the parsed Playlist
      */
     public YouTubePlaylist parsePlaylist(String playlistId) {
         final ImplYouTubePlaylist playlist = new ImplYouTubePlaylist(playlistId);
         playlist.parse(apiKey);
-        
+
         return playlist;
     }
 

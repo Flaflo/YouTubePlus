@@ -2,10 +2,11 @@ package xyz.flaflo.ytp.video;
 
 /**
  * Represents a parser for YouTube videos
+ *
  * @author Flaflo
  */
 public final class YouTubeVideoParser {
-    
+
     private String apiKey;
 
     /**
@@ -14,16 +15,17 @@ public final class YouTubeVideoParser {
     public YouTubeVideoParser(String apiKey) {
         this.apiKey = apiKey;
     }
-    
+
     /**
      * Parses a YouTube video
+     *
      * @param videoId the video id
      * @return the YouTube video
      */
     public YouTubeVideo parseYouTubeVideo(String videoId) {
         final ImplYouTubeVideo video = new ImplYouTubeVideo(videoId);
         video.parse(apiKey);
-        
+
         return video;
     }
 

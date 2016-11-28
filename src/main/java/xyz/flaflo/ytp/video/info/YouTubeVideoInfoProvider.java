@@ -2,6 +2,7 @@ package xyz.flaflo.ytp.video.info;
 
 /**
  * Provides YouTube video informations
+ *
  * @author Flaflo
  */
 public final class YouTubeVideoInfoProvider {
@@ -14,16 +15,17 @@ public final class YouTubeVideoInfoProvider {
     public YouTubeVideoInfoProvider(String apiKey) {
         this.apiKey = apiKey;
     }
-    
+
     /**
      * Provides a YouTube video info
+     *
      * @param videoId the video id
      * @return the YouTube video info
      */
     public YouTubeVideoInfo provideYouTubeVideoInfo(String videoId) {
         final ImplYouTubeVideoInfo videoInfo = new ImplYouTubeVideoInfo(videoId);
         videoInfo.parse(apiKey);
-        
+
         return videoInfo;
     }
 
