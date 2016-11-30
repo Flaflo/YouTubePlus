@@ -2,7 +2,7 @@ package xyz.flaflo.ytp.playlist;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,12 +18,11 @@ import xyz.flaflo.ytp.video.YouTubeVideoParser;
  *
  * @author Flaflo
  */
-final class ImplYouTubePlaylist implements YouTubePlaylist {
+final class ImplYouTubePlaylist extends ArrayList<YouTubeVideo> implements YouTubePlaylist {
 
     private static final String YOUTUBE_API_PLAYLIST = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=%s&key=%s";
 
     private String playlistId;
-    private YouTubeVideo[] videos;
 
     /**
      * @param playlistId the YouTube playlist id
@@ -48,8 +47,6 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
         final int totalVideos = pageInfo.getInt("totalResults");
         final int pages = (int) Math.ceil(totalVideos / 50D);
 
-        this.videos = new YouTubeVideo[totalVideos];
-
         final ExecutorService executor = Executors.newFixedThreadPool(totalVideos);
         final FutureTask[] tasks = new FutureTask[totalVideos];
 
@@ -62,7 +59,7 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
             if (page > 0 && pageInfos.containsKey("nextPageToken")) {
                 nextPageToken = pageInfos.getString("nextPageToken");
             }
-
+            
             for (final Object obj : items) {
                 if (obj instanceof JSONObject) {
                     final JSONObject item = (JSONObject) obj;
@@ -70,7 +67,7 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
                     final JSONObject resourceId = snippet.getJSONObject("resourceId");
                     final String videoId = resourceId.getString("videoId");
 
-                    final FutureTask<YouTubeVideo> videoParseTask = new FutureTask<YouTubeVideo>(() -> videoParser.parseYouTubeVideoFromJson(videoId, pageInfos.toString()));
+                    final FutureTask<YouTubeVideo> videoParseTask = new FutureTask<YouTubeVideo>(() -> videoParser.parseYouTubeVideoFromJson(videoId, item.toString()));
                     tasks[parseIndex++] = videoParseTask;
                     executor.execute(videoParseTask);
                 }
@@ -79,7 +76,7 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
 
         for (int i = 0; i < parseIndex; i++) {
             final FutureTask<YouTubeVideo> videoParseTask = tasks[i];
-            this.videos[i] = videoParseTask.get();
+            this.add(videoParseTask.get());
         }
 
         executor.shutdown();
@@ -88,15 +85,5 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
     @Override
     public String getPlaylistId() {
         return playlistId;
-    }
-
-    @Override
-    public YouTubeVideo[] getVideos() {
-        return videos;
-    }
-
-    @Override
-    public String toString() {
-        return "{YouTubePlaylist:{" + "videos:" + Arrays.toString(this.getVideos()) + ",id:" + this.getPlaylistId() + "}";
     }
 }
