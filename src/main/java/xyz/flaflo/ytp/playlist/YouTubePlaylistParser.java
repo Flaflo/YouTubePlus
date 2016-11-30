@@ -1,5 +1,7 @@
 package xyz.flaflo.ytp.playlist;
 
+import java.text.ParseException;
+
 /**
  * Provides a parser for YouTube playlists
  *
@@ -22,7 +24,7 @@ public final class YouTubePlaylistParser {
      * @param playlistId the playlist id
      * @return the parsed Playlist
      */
-    public YouTubePlaylist parsePlaylist(String playlistId) {
+    public YouTubePlaylist parsePlaylist(String playlistId) throws ParseException {
         final ImplYouTubePlaylist playlist = new ImplYouTubePlaylist(playlistId);
         playlist.parse(apiKey);
 

@@ -1,5 +1,8 @@
 package xyz.flaflo.ytp.video;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 /**
  * Represents a parser for YouTube videos
  *
@@ -22,7 +25,7 @@ public final class YouTubeVideoParser {
      * @param videoId the video id
      * @return the YouTube video
      */
-    public YouTubeVideo parseYouTubeVideo(String videoId) {
+    public YouTubeVideo parseYouTubeVideo(String videoId) throws ParseException, IOException {
         final ImplYouTubeVideo video = new ImplYouTubeVideo(videoId);
         video.parse(apiKey);
 

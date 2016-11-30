@@ -1,5 +1,7 @@
 package xyz.flaflo.ytp.video;
 
+import java.io.IOException;
+import java.text.ParseException;
 import xyz.flaflo.ytp.video.info.YouTubeVideoInfo;
 import xyz.flaflo.ytp.video.info.YouTubeVideoInfoProvider;
 
@@ -25,7 +27,7 @@ final class ImplYouTubeVideo implements YouTubeVideo {
      *
      * @param key the google api key
      */
-    public void parse(String key) {
+    void parse(String key) throws ParseException, IOException {
         final YouTubeVideoInfoProvider infoProvider = new YouTubeVideoInfoProvider(key);
         this.info = infoProvider.provideYouTubeVideoInfo(this.videoId);
     }

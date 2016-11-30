@@ -73,7 +73,7 @@ public class ISO8601DateParser {
 
         //NOTE: SimpleDateFormat uses GMT[-+]hh:mm for the TZ which breaks
         //things a bit.  Before we go on we have to repair this.
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
         //this is zero time so we need to add that TZ indicator for 
         if (input.endsWith("Z")) {

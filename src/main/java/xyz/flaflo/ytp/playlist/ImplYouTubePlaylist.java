@@ -1,5 +1,7 @@
 package xyz.flaflo.ytp.playlist;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Arrays;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -31,7 +33,7 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
      *
      * @param key the google api key
      */
-    public void parse(String key) {
+    void parse(String key) throws ParseException, IOException {
         final YouTubeVideoParser videoParser = new YouTubeVideoParser(key);
 
         final String infoUrl = String.format(YOUTUBE_API_PLAYLIST, playlistId, key);

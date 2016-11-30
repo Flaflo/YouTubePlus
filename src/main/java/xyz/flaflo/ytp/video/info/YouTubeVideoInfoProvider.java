@@ -1,5 +1,8 @@
 package xyz.flaflo.ytp.video.info;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 /**
  * Provides YouTube video informations
  *
@@ -22,9 +25,22 @@ public final class YouTubeVideoInfoProvider {
      * @param videoId the video id
      * @return the YouTube video info
      */
-    public YouTubeVideoInfo provideYouTubeVideoInfo(String videoId) {
+    public YouTubeVideoInfo provideYouTubeVideoInfo(String videoId) throws ParseException, IOException {
         final ImplYouTubeVideoInfo videoInfo = new ImplYouTubeVideoInfo(videoId);
         videoInfo.parse(apiKey);
+
+        return videoInfo;
+    }
+
+    /**
+     * Provides a YouTube video info by a json string
+     *
+     * @param json the json string
+     * @return the YouTube video info
+     */
+    public YouTubeVideoInfo provideYouTubeVideoInfoFromJson(String json) throws ParseException, IOException {
+        final ImplYouTubeVideoInfo videoInfo = new ImplYouTubeVideoInfo();
+        videoInfo.parse(apiKey, json);
 
         return videoInfo;
     }
