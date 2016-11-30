@@ -56,47 +56,54 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
      */
     void parse(String key, String json) throws ParseException, IOException {
         final JSONObject infos = JSONObject.fromObject(json);
-        final JSONArray items = infos.getJSONArray("items");
 
-        for (Object obj : items) {
-            if (obj instanceof JSONObject) {
-                final JSONObject item = (JSONObject) obj;
+        JSONObject snippet = infos.getJSONObject("snippet");
 
-                if (item.containsKey("snippet")) {
-                    final JSONObject snippet = item.getJSONObject("snippet");
+        if (snippet == null) {
+            final JSONArray items = infos.getJSONArray("items");
 
-                    if (snippet.containsKey("publishedAt")) {
-                        final Date publishedAt = ISO8601DateParser.parse(snippet.getString("publishedAt"));
-                        this.publishedAt = publishedAt;
+            for (Object obj : items) {
+                if (obj instanceof JSONObject) {
+                    final JSONObject item = (JSONObject) obj;
+
+                    if (item.containsKey("snippet")) {
+                        snippet = item.getJSONObject("snippet");
                     }
+                }
+            }
+        }
 
-                    if (snippet.containsKey("channelId")) {
-                        final String channelId = snippet.getString("channelId");
-                        this.channelId = channelId;
-                    }
+        if (snippet != null) {
+            if (snippet.containsKey("publishedAt")) {
+                final Date publishedAt = ISO8601DateParser.parse(snippet.getString("publishedAt"));
+                this.publishedAt = publishedAt;
+            }
 
-                    if (snippet.containsKey("title")) {
-                        final String title = snippet.getString("title");
-                        this.title = title;
-                    }
+            if (snippet.containsKey("channelId")) {
+                final String channelId = snippet.getString("channelId");
+                this.channelId = channelId;
+            }
 
-                    if (snippet.containsKey("description")) {
-                        final String description = snippet.getString("description");
-                        this.description = description;
-                    }
+            if (snippet.containsKey("title")) {
+                final String title = snippet.getString("title");
+                this.title = title;
+            }
 
-                    if (snippet.containsKey("tags")) {
-                        final JSONArray tags = snippet.getJSONArray("tags");
-                        this.tags = new String[tags.size()];
+            if (snippet.containsKey("description")) {
+                final String description = snippet.getString("description");
+                this.description = description;
+            }
 
-                        for (int i = 0; i < tags.size(); i++) {
-                            final Object obj1 = tags.get(i);
+            if (snippet.containsKey("tags")) {
+                final JSONArray tags = snippet.getJSONArray("tags");
+                this.tags = new String[tags.size()];
 
-                            if (obj1 instanceof String) {
-                                final String tag = (String) obj1;
-                                this.tags[i] = tag;
-                            }
-                        }
+                for (int i = 0; i < tags.size(); i++) {
+                    final Object obj1 = tags.get(i);
+
+                    if (obj1 instanceof String) {
+                        final String tag = (String) obj1;
+                        this.tags[i] = tag;
                     }
                 }
             }

@@ -52,9 +52,4 @@ final class ImplYouTubeVideo implements YouTubeVideo {
     public YouTubeVideoInfo getInfo() {
         return info;
     }
-
-    @Override
-    public String toString() {
-        return "{YouTubeVideo:{videoId:" + this.getVideoId() + ",title:" + this.getInfo().getTitle() + "}}";
-    }
 }
