@@ -1,5 +1,6 @@
 package xyz.flaflo.ytp.playlist;
 
+import java.util.List;
 import xyz.flaflo.ytp.video.YouTubeVideo;
 
 /**
@@ -7,16 +8,11 @@ import xyz.flaflo.ytp.video.YouTubeVideo;
  *
  * @author Flaflo
  */
-public interface YouTubePlaylist {
+public interface YouTubePlaylist extends List<YouTubeVideo> {
 
     /**
      * @return the YouTube playlist id
      */
     String getPlaylistId();
-
-    /**
-     * @return the Videos contained in the playlist
-     */
-    YouTubeVideo[] getVideos();
 
 }
