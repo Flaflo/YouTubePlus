@@ -70,7 +70,7 @@ final YouTubeThumbnailFormat = thumbnail.getFormat();
 ```Java
 final Image image = thumbnail.getImage();
 ```
-You can also create thumbnail objects by an url or image object you provide in the ``YouTubeThumbnailParser``.
+You can also create thumbnail objects by an url or image object you provide in the ``YouTubeThumbnailParser``:
 ```Java
 final YouTubeThumbnail createdThumbnail = thumbnailParser.createThumbnail(URL_OR_IMAGE);
 ```
