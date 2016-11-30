@@ -8,10 +8,7 @@ final YouTubePlaylistParser playlistParser = new YouTubePlaylistParser("GOOGLE_A
 final YouTubePlaylist playlist = playlistParser.parsePlaylist("PLAYLIST_ID");
 ```
 You can get various informations from a Playlist.
-As example you can get all ``YouTubeVideo``s contained in a ``YouTubePlaylist``:
-```Java
-playlist.getVideos();
-```
+As example you can get all ``YouTubeVideo``s contained in a ``YouTubePlaylist`` by iterating through it like a ``java.util.List``.
 # Videos
 To parse a ``YouTubeVideo`` you use the ``YouTubeVideoParser``:
 ```Java
