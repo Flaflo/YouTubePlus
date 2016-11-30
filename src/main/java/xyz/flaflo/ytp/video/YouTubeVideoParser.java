@@ -31,6 +31,20 @@ public final class YouTubeVideoParser {
 
         return video;
     }
+    
+        /**
+     * Parses a YouTube video
+     *
+     * @param videoId the video id
+     * @param json the json string
+     * @return the YouTube video
+     */
+    public YouTubeVideo parseYouTubeVideoFromJson(String videoId, String json) throws ParseException, IOException {
+        final ImplYouTubeVideo video = new ImplYouTubeVideo(videoId);
+        video.parse(apiKey, json);
+
+        return video;
+    }
 
     /**
      * @return the google api key

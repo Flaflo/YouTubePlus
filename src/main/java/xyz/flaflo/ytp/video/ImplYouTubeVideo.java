@@ -32,6 +32,17 @@ final class ImplYouTubeVideo implements YouTubeVideo {
         this.info = infoProvider.provideYouTubeVideoInfo(this.videoId);
     }
 
+    /**
+     * Parses the video informations
+     *
+     * @param key the google api key
+     * @param json the json string
+     */
+    void parse(String key, String json) throws ParseException, IOException {
+        final YouTubeVideoInfoProvider infoProvider = new YouTubeVideoInfoProvider(key);
+        this.info = infoProvider.provideYouTubeVideoInfoFromJson(json);
+    }
+
     @Override
     public String getVideoId() {
         return videoId;

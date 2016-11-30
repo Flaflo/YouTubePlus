@@ -3,6 +3,10 @@ package xyz.flaflo.ytp.playlist;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import xyz.flaflo.ytp.util.WebUtil;
@@ -33,9 +37,8 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
      *
      * @param key the google api key
      */
-    void parse(String key) throws ParseException, IOException {
+    void parse(String key) throws ParseException, IOException, InterruptedException, ExecutionException {
         final YouTubeVideoParser videoParser = new YouTubeVideoParser(key);
-
         final String infoUrl = String.format(YOUTUBE_API_PLAYLIST, playlistId, key);
         final JSONObject playlistInfos = JSONObject.fromObject(WebUtil.getWebContent(infoUrl));
 
@@ -46,6 +49,9 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
         final int pages = (int) Math.ceil(totalVideos / 50D);
 
         this.videos = new YouTubeVideo[totalVideos];
+
+        final ExecutorService executor = Executors.newFixedThreadPool(totalVideos);
+        final FutureTask[] tasks = new FutureTask[totalVideos];
 
         int parseIndex = 0;
 
@@ -64,10 +70,19 @@ final class ImplYouTubePlaylist implements YouTubePlaylist {
                     final JSONObject resourceId = snippet.getJSONObject("resourceId");
                     final String videoId = resourceId.getString("videoId");
 
-                    this.videos[parseIndex++] = videoParser.parseYouTubeVideo(videoId);
+                    final FutureTask<YouTubeVideo> videoParseTask = new FutureTask<YouTubeVideo>(() -> videoParser.parseYouTubeVideoFromJson(videoId, pageInfos.toString()));
+                    tasks[parseIndex++] = videoParseTask;
+                    executor.execute(videoParseTask);
                 }
             }
         }
+
+        for (int i = 0; i < parseIndex; i++) {
+            final FutureTask<YouTubeVideo> videoParseTask = tasks[i];
+            this.videos[i] = videoParseTask.get();
+        }
+
+        executor.shutdown();
     }
 
     @Override
