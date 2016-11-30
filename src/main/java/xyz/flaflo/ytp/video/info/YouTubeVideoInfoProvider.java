@@ -24,6 +24,8 @@ public final class YouTubeVideoInfoProvider {
      *
      * @param videoId the video id
      * @return the YouTube video info
+     * @throws java.text.ParseException
+     * @throws java.io.IOException
      */
     public YouTubeVideoInfo provideYouTubeVideoInfo(String videoId) throws ParseException, IOException {
         final ImplYouTubeVideoInfo videoInfo = new ImplYouTubeVideoInfo(videoId);
@@ -37,6 +39,8 @@ public final class YouTubeVideoInfoProvider {
      *
      * @param json the json string
      * @return the YouTube video info
+     * @throws java.text.ParseException
+     * @throws java.io.IOException
      */
     public YouTubeVideoInfo provideYouTubeVideoInfoFromJson(String json) throws ParseException, IOException {
         final ImplYouTubeVideoInfo videoInfo = new ImplYouTubeVideoInfo();

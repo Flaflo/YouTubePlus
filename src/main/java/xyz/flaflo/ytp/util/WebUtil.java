@@ -83,14 +83,15 @@ public final class WebUtil {
 
             //Get Response
             final InputStream is = connection.getInputStream();
-            final BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("windows-1252")));
-            final StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
-            String line;
-            while ((line = rd.readLine()) != null) {
-                response.append(line);
-                response.append('\r');
-            }
-            rd.close();
+            final StringBuilder response;
+            try (BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("windows-1252")))) {
+                response = new StringBuilder(); // or StringBuffer if Java version 5+
+                String line;
+                while ((line = rd.readLine()) != null) {
+                    response.append(line);
+                    response.append('\r');
+                }
+            } // or StringBuffer if Java version 5+
             return response.toString();
         } catch (IOException e) {
             e.printStackTrace();

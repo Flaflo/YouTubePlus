@@ -67,7 +67,7 @@ final class ImplYouTubePlaylist extends ArrayList<YouTubeVideo> implements YouTu
                     final JSONObject resourceId = snippet.getJSONObject("resourceId");
                     final String videoId = resourceId.getString("videoId");
 
-                    final FutureTask<YouTubeVideo> videoParseTask = new FutureTask<YouTubeVideo>(() -> videoParser.parseYouTubeVideoFromJson(videoId, item.toString()));
+                    final FutureTask<YouTubeVideo> videoParseTask = new FutureTask<>(() -> videoParser.parseYouTubeVideoFromJson(videoId, item.toString()));
                     tasks[parseIndex++] = videoParseTask;
                     executor.execute(videoParseTask);
                 }

@@ -44,6 +44,7 @@ public final class YouTubeThumbnailParser {
      *
      * @param videoId the video id
      * @return the container for all thumbnail formats
+     * @throws java.io.IOException
      */
     public YouTubeThumbnailContainer parseThumbnail(String videoId) throws IOException {
         final ImplYouTubeThumbnailContainer container = new ImplYouTubeThumbnailContainer(videoId);
@@ -56,6 +57,7 @@ public final class YouTubeThumbnailParser {
      * Parses a YouTube thumbnail
      * @param json the json string
      * @return the container for all thumbnail formats
+     * @throws java.io.IOException
      */
     public YouTubeThumbnailContainer parseThumbnailFromJson(String json) throws IOException {
         final ImplYouTubeThumbnailContainer container = new ImplYouTubeThumbnailContainer();

@@ -24,6 +24,8 @@ public final class YouTubeVideoParser {
      *
      * @param videoId the video id
      * @return the YouTube video
+     * @throws java.text.ParseException
+     * @throws java.io.IOException
      */
     public YouTubeVideo parseYouTubeVideo(String videoId) throws ParseException, IOException {
         final ImplYouTubeVideo video = new ImplYouTubeVideo(videoId);
@@ -38,6 +40,8 @@ public final class YouTubeVideoParser {
      * @param videoId the video id
      * @param json the json string
      * @return the YouTube video
+     * @throws java.text.ParseException
+     * @throws java.io.IOException
      */
     public YouTubeVideo parseYouTubeVideoFromJson(String videoId, String json) throws ParseException, IOException {
         final ImplYouTubeVideo video = new ImplYouTubeVideo(videoId);

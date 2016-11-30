@@ -25,6 +25,10 @@ public final class YouTubePlaylistParser {
      *
      * @param playlistId the playlist id
      * @return the parsed Playlist
+     * @throws java.text.ParseException
+     * @throws java.io.IOException
+     * @throws java.lang.InterruptedException
+     * @throws java.util.concurrent.ExecutionException
      */
     public YouTubePlaylist parsePlaylist(String playlistId) throws ParseException, IOException, InterruptedException, ExecutionException {
         final ImplYouTubePlaylist playlist = new ImplYouTubePlaylist(playlistId);
