@@ -1,7 +1,6 @@
 package xyz.flaflo.ytp.video.info;
 
 import java.util.Date;
-import xyz.flaflo.ytp.video.thumbnail.YouTubeThumbnailContainer;
 
 /**
  * Stores informations about a YouTube video
@@ -35,11 +34,6 @@ public interface YouTubeVideoInfo {
      */
     String[] getTags();
 
-    /**
-     * @return a container with all thumbnail formats
-     */
-    YouTubeThumbnailContainer getThumbnailContainer();
-    
     /**
      * @return the video id
      */

@@ -7,8 +7,6 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import xyz.flaflo.ytp.util.ISO8601DateParser;
 import xyz.flaflo.ytp.util.WebUtil;
-import xyz.flaflo.ytp.video.thumbnail.YouTubeThumbnailContainer;
-import xyz.flaflo.ytp.video.thumbnail.YouTubeThumbnailParser;
 
 /**
  * Stores informations about a YouTube video
@@ -30,8 +28,6 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
     private String description;
 
     private String[] tags;
-
-    private YouTubeThumbnailContainer thumbnailContainer;
 
     /**
      * @param videoId the YouTube video id
@@ -105,11 +101,6 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
                 }
             }
         }
-
-        final YouTubeThumbnailParser thumbnailParser = new YouTubeThumbnailParser(key);
-        final YouTubeThumbnailContainer thumbnailContainer = thumbnailParser.parseThumbnailFromJson(json);
-
-        this.thumbnailContainer = thumbnailContainer;
     }
 
     @Override
@@ -141,10 +132,4 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
     public String[] getTags() {
         return tags;
     }
-
-    @Override
-    public YouTubeThumbnailContainer getThumbnailContainer() {
-        return thumbnailContainer;
-    }
-
 }
