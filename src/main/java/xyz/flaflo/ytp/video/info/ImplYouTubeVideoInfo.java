@@ -59,20 +59,21 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
 
         JSONObject snippet = infos.getJSONObject("snippet");
 
-        if (snippet == null) {
+        if (snippet.isNullObject()) {
             final JSONArray items = infos.getJSONArray("items");
 
             for (Object obj : items) {
                 if (obj instanceof JSONObject) {
                     final JSONObject item = (JSONObject) obj;
 
+                    
                     if (item.containsKey("snippet")) {
                         snippet = item.getJSONObject("snippet");
                     }
                 }
             }
         }
-
+        
         if (snippet != null) {
             if (snippet.containsKey("publishedAt")) {
                 final Date publishedAt = ISO8601DateParser.parse(snippet.getString("publishedAt"));
