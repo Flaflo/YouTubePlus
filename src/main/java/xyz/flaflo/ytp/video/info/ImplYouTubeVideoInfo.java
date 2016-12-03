@@ -65,7 +65,6 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
             for (Object obj : items) {
                 if (obj instanceof JSONObject) {
                     final JSONObject item = (JSONObject) obj;
-
                     
                     if (item.containsKey("snippet")) {
                         snippet = item.getJSONObject("snippet");
