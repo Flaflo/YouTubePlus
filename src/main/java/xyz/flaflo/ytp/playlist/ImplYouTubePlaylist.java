@@ -21,6 +21,11 @@ import xyz.flaflo.ytp.video.YouTubeVideoParser;
 final class ImplYouTubePlaylist extends ArrayList<YouTubeVideo> implements YouTubePlaylist {
 
     /**
+     * The max results per page
+     */
+    private static int MAX_RESULTS = 50;
+    
+    /**
      * The API URL template
      */
     private static final String YOUTUBE_API_PLAYLIST = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=%s&key=%s";
@@ -41,14 +46,14 @@ final class ImplYouTubePlaylist extends ArrayList<YouTubeVideo> implements YouTu
      */
     void parse(final String key) throws ParseException, IOException, InterruptedException, ExecutionException {
         final YouTubeVideoParser videoParser = new YouTubeVideoParser(key);
-        final String infoUrl = String.format(YOUTUBE_API_PLAYLIST, playlistId, key);
+        final String infoUrl = String.format(YOUTUBE_API_PLAYLIST, MAX_RESULTS, playlistId, key);
         final JSONObject playlistInfos = JSONObject.fromObject(WebUtil.getWebContent(infoUrl));
 
         String nextPageToken = playlistInfos.containsKey("nextPageToken") ? playlistInfos.getString("nextPageToken") : "";
 
         final JSONObject pageInfo = playlistInfos.getJSONObject("pageInfo");
         final int totalVideos = pageInfo.getInt("totalResults");
-        final int pages = (int) Math.ceil(totalVideos / 50D);
+        final int pages = (int) Math.ceil(totalVideos / (double) MAX_RESULTS);
 
         final ExecutorService executor = Executors.newFixedThreadPool(totalVideos);
         final FutureTask[] tasks = new FutureTask[totalVideos];
