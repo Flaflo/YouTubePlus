@@ -74,3 +74,19 @@ You can also create thumbnail objects by an url or image object you provide in t
 ```Java
 final YouTubeThumbnail createdThumbnail = thumbnailParser.createThumbnail(URL_OR_IMAGE);
 ```
+
+## Download
+
+A compiled version can be found under the GitHub releases.
+
+### Maven
+
+Just add this dependency to your pom file:
+
+```xml
+<dependency>
+    <groupId>com.github.flaflo</groupId>
+    <artifactId>YouTubePlus</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
