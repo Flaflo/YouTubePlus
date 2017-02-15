@@ -81,8 +81,16 @@ A compiled version can be found under the GitHub releases.
 
 ### Maven
 
-Just add this dependency to your pom file:
+Just add this repository and dependency to your pom file:
 
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io/</url>
+    </repository>
+</repositories>
+```
 ```xml
 <dependency>
     <groupId>com.github.flaflo</groupId>
