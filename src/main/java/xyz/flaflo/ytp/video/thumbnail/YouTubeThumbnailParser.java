@@ -15,7 +15,7 @@ public final class YouTubeThumbnailParser {
     /**
      * @param apiKey the google api key
      */
-    public YouTubeThumbnailParser(String apiKey) {
+    public YouTubeThumbnailParser(final String apiKey) {
         this.apiKey = apiKey;
     }
 
@@ -25,7 +25,7 @@ public final class YouTubeThumbnailParser {
      * @return the generated YouTubeThumbnail object
      * @throws IOException
      */
-    public YouTubeThumbnail createThumbnail(YouTubeThumbnailFormat format, String imageUrl) throws IOException {
+    public YouTubeThumbnail createThumbnail(final YouTubeThumbnailFormat format, final String imageUrl) throws IOException {
         return new ImplYouTubeThumbnail(format, imageUrl);
     }
     
@@ -35,7 +35,7 @@ public final class YouTubeThumbnailParser {
      * @return the generated YouTubeThumbnail object
      * @throws IOException
      */
-    public YouTubeThumbnail createThumbnail(YouTubeThumbnailFormat format, Image image) throws IOException {
+    public YouTubeThumbnail createThumbnail(final YouTubeThumbnailFormat format, final Image image) throws IOException {
         return new ImplYouTubeThumbnail(format, image);
     }
 
@@ -46,7 +46,7 @@ public final class YouTubeThumbnailParser {
      * @return the container for all thumbnail formats
      * @throws java.io.IOException
      */
-    public YouTubeThumbnailContainer parseThumbnail(String videoId) throws IOException {
+    public YouTubeThumbnailContainer parseThumbnail(final String videoId) throws IOException {
         final ImplYouTubeThumbnailContainer container = new ImplYouTubeThumbnailContainer(videoId);
         container.parse(apiKey);
 
@@ -59,7 +59,7 @@ public final class YouTubeThumbnailParser {
      * @return the container for all thumbnail formats
      * @throws java.io.IOException
      */
-    public YouTubeThumbnailContainer parseThumbnailFromJson(String json) throws IOException {
+    public YouTubeThumbnailContainer parseThumbnailFromJson(final String json) throws IOException {
         final ImplYouTubeThumbnailContainer container = new ImplYouTubeThumbnailContainer();
         container.parse(apiKey, json);
 
@@ -76,7 +76,7 @@ public final class YouTubeThumbnailParser {
     /**
      * @param apiKey the google api key
      */
-    public void setApiKey(String apiKey) {
+    public void setApiKey(final String apiKey) {
         this.apiKey = apiKey;
     }
 }

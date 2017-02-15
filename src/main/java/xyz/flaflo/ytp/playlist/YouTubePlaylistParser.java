@@ -30,7 +30,7 @@ public final class YouTubePlaylistParser {
      * @throws java.lang.InterruptedException
      * @throws java.util.concurrent.ExecutionException
      */
-    public YouTubePlaylist parsePlaylist(String playlistId) throws ParseException, IOException, InterruptedException, ExecutionException {
+    public YouTubePlaylist parsePlaylist(final String playlistId) throws ParseException, IOException, InterruptedException, ExecutionException {
         final ImplYouTubePlaylist playlist = new ImplYouTubePlaylist(playlistId);
         playlist.parse(apiKey);
 
@@ -47,7 +47,7 @@ public final class YouTubePlaylistParser {
     /**
      * @param apiKey the google api key
      */
-    public void setApiKey(String apiKey) {
+    public void setApiKey(final String apiKey) {
         this.apiKey = apiKey;
     }
 }

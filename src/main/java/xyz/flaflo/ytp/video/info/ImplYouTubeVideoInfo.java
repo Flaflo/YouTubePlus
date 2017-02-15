@@ -44,7 +44,7 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
      *
      * @param key the google api key
      */
-    void parse(String key) throws ParseException, IOException {
+    void parse(final String key) throws ParseException, IOException {
         this.parse(key, WebUtil.getWebContent(String.format(YOUTUBE_API_VIDEO_INFO, this.videoId, key)));
     }
 
@@ -54,7 +54,7 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
      * @param key the google api key
      * @param json the json string
      */
-    void parse(String key, String json) throws ParseException, IOException {
+    void parse(final String key, final String json) throws ParseException, IOException {
         final JSONObject infos = JSONObject.fromObject(json);
 
         JSONObject snippet = infos.getJSONObject("snippet");

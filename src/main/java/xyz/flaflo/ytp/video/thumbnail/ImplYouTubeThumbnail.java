@@ -20,20 +20,20 @@ final class ImplYouTubeThumbnail implements YouTubeThumbnail {
      * @param format the format
      * @param image the image
      */
-    ImplYouTubeThumbnail(YouTubeThumbnailFormat format, Image image) {
+    ImplYouTubeThumbnail(final YouTubeThumbnailFormat format, final Image image) {
         this.format = format;
         this.image = image;
     }
-    
-        /**
+
+    /**
      * @param format the format
      * @param image the image url
      */
-    ImplYouTubeThumbnail(YouTubeThumbnailFormat format, String image) throws MalformedURLException, IOException {
+    ImplYouTubeThumbnail(final YouTubeThumbnailFormat format, final String image) throws MalformedURLException, IOException {
         this.format = format;
         this.image = ImageIO.read(new URL(image));
     }
-    
+
     @Override
     public YouTubeThumbnailFormat getFormat() {
         return format;

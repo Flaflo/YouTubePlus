@@ -12,10 +12,10 @@ public interface YouTubeThumbnail {
     /**
      * @return the youtube thumbnail format
      */
-    public YouTubeThumbnailFormat getFormat();
+    YouTubeThumbnailFormat getFormat();
     
     /**
      * @return the thumbnail as image object
      */
-    public Image getImage();
+    Image getImage();
 }

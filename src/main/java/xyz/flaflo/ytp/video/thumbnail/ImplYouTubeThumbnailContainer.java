@@ -29,7 +29,7 @@ final class ImplYouTubeThumbnailContainer implements YouTubeThumbnailContainer {
      * @param res_standard the standard resolution
      * @param res_max the max resolution
      */
-    ImplYouTubeThumbnailContainer(YouTubeThumbnail res_default, YouTubeThumbnail res_medium, YouTubeThumbnail res_high, YouTubeThumbnail res_standard, YouTubeThumbnail res_max) {
+    ImplYouTubeThumbnailContainer(final YouTubeThumbnail res_default, final YouTubeThumbnail res_medium, final YouTubeThumbnail res_high, final YouTubeThumbnail res_standard, final YouTubeThumbnail res_max) {
         this.res_default = res_default;
         this.res_medium = res_medium;
         this.res_high = res_high;
@@ -37,7 +37,7 @@ final class ImplYouTubeThumbnailContainer implements YouTubeThumbnailContainer {
         this.res_max = res_max;
     }
 
-    ImplYouTubeThumbnailContainer(String videoId) {
+    ImplYouTubeThumbnailContainer(final String videoId) {
         this.videoId = videoId;
     }
 
@@ -45,7 +45,7 @@ final class ImplYouTubeThumbnailContainer implements YouTubeThumbnailContainer {
     }
 
     @Override
-    public YouTubeThumbnail getThumbnail(YouTubeThumbnailFormat format) {
+    public YouTubeThumbnail getThumbnail(final YouTubeThumbnailFormat format) {
         switch (format) {
             case DEFAULT:
                 return res_default;
@@ -65,7 +65,7 @@ final class ImplYouTubeThumbnailContainer implements YouTubeThumbnailContainer {
     /**
      * Parses all thumbnails
      */
-    void parse(String key) throws IOException {
+    void parse(final String key) throws IOException {
         parse(key, WebUtil.getWebContent(String.format(YOUTUBE_API_THUMBNAIL, this.videoId, key)));
     }
 
@@ -75,7 +75,7 @@ final class ImplYouTubeThumbnailContainer implements YouTubeThumbnailContainer {
      * @param key the google api key
      * @param json the json string
      */
-    void parse(String key, String json) throws IOException {
+    void parse(final String key, final String json) throws IOException {
         final JSONObject videoInfos = JSONObject.fromObject(json);
         final JSONArray items = videoInfos.getJSONArray("items");
 

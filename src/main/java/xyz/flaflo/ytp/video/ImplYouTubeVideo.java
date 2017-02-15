@@ -18,7 +18,7 @@ final class ImplYouTubeVideo implements YouTubeVideo {
     /**
      * @param videoId the video id
      */
-    ImplYouTubeVideo(String videoId) {
+    ImplYouTubeVideo(final String videoId) {
         this.videoId = videoId;
     }
 
@@ -27,7 +27,7 @@ final class ImplYouTubeVideo implements YouTubeVideo {
      *
      * @param key the google api key
      */
-    void parse(String key) throws ParseException, IOException {
+    void parse(final String key) throws ParseException, IOException {
         final YouTubeVideoInfoProvider infoProvider = new YouTubeVideoInfoProvider(key);
         this.info = infoProvider.provideYouTubeVideoInfo(this.videoId);
     }
@@ -38,7 +38,7 @@ final class ImplYouTubeVideo implements YouTubeVideo {
      * @param key the google api key
      * @param json the json string
      */
-    void parse(String key, String json) throws ParseException, IOException {
+    void parse(final String key, final String json) throws ParseException, IOException {
         final YouTubeVideoInfoProvider infoProvider = new YouTubeVideoInfoProvider(key);
         this.info = infoProvider.provideYouTubeVideoInfoFromJson(json);
     }

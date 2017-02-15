@@ -15,7 +15,7 @@ public final class YouTubeVideoInfoProvider {
     /**
      * @param apiKey the google api key
      */
-    public YouTubeVideoInfoProvider(String apiKey) {
+    public YouTubeVideoInfoProvider(final String apiKey) {
         this.apiKey = apiKey;
     }
 
@@ -27,7 +27,7 @@ public final class YouTubeVideoInfoProvider {
      * @throws java.text.ParseException
      * @throws java.io.IOException
      */
-    public YouTubeVideoInfo provideYouTubeVideoInfo(String videoId) throws ParseException, IOException {
+    public YouTubeVideoInfo provideYouTubeVideoInfo(final String videoId) throws ParseException, IOException {
         final ImplYouTubeVideoInfo videoInfo = new ImplYouTubeVideoInfo(videoId);
         videoInfo.parse(apiKey);
 
@@ -42,7 +42,7 @@ public final class YouTubeVideoInfoProvider {
      * @throws java.text.ParseException
      * @throws java.io.IOException
      */
-    public YouTubeVideoInfo provideYouTubeVideoInfoFromJson(String json) throws ParseException, IOException {
+    public YouTubeVideoInfo provideYouTubeVideoInfoFromJson(final String json) throws ParseException, IOException {
         final ImplYouTubeVideoInfo videoInfo = new ImplYouTubeVideoInfo();
         videoInfo.parse(apiKey, json);
 
@@ -59,7 +59,7 @@ public final class YouTubeVideoInfoProvider {
     /**
      * @param apiKey the google api key
      */
-    public void setApiKey(String apiKey) {
+    public void setApiKey(final String apiKey) {
         this.apiKey = apiKey;
     }
 }

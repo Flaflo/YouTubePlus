@@ -20,14 +20,17 @@ import xyz.flaflo.ytp.video.YouTubeVideoParser;
  */
 final class ImplYouTubePlaylist extends ArrayList<YouTubeVideo> implements YouTubePlaylist {
 
+    /**
+     * The API URL template
+     */
     private static final String YOUTUBE_API_PLAYLIST = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=%s&key=%s";
 
-    private String playlistId;
+    private final String playlistId;
 
     /**
      * @param playlistId the YouTube playlist id
      */
-    ImplYouTubePlaylist(String playlistId) {
+    ImplYouTubePlaylist(final String playlistId) {
         this.playlistId = playlistId;
     }
 
@@ -36,7 +39,7 @@ final class ImplYouTubePlaylist extends ArrayList<YouTubeVideo> implements YouTu
      *
      * @param key the google api key
      */
-    void parse(String key) throws ParseException, IOException, InterruptedException, ExecutionException {
+    void parse(final String key) throws ParseException, IOException, InterruptedException, ExecutionException {
         final YouTubeVideoParser videoParser = new YouTubeVideoParser(key);
         final String infoUrl = String.format(YOUTUBE_API_PLAYLIST, playlistId, key);
         final JSONObject playlistInfos = JSONObject.fromObject(WebUtil.getWebContent(infoUrl));

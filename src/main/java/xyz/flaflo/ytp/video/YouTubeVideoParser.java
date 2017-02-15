@@ -15,7 +15,7 @@ public final class YouTubeVideoParser {
     /**
      * @param apiKey the google api key
      */
-    public YouTubeVideoParser(String apiKey) {
+    public YouTubeVideoParser(final String apiKey) {
         this.apiKey = apiKey;
     }
 
@@ -27,7 +27,7 @@ public final class YouTubeVideoParser {
      * @throws java.text.ParseException
      * @throws java.io.IOException
      */
-    public YouTubeVideo parseYouTubeVideo(String videoId) throws ParseException, IOException {
+    public YouTubeVideo parseYouTubeVideo(final String videoId) throws ParseException, IOException {
         final ImplYouTubeVideo video = new ImplYouTubeVideo(videoId);
         video.parse(apiKey);
 
@@ -43,7 +43,7 @@ public final class YouTubeVideoParser {
      * @throws java.text.ParseException
      * @throws java.io.IOException
      */
-    public YouTubeVideo parseYouTubeVideoFromJson(String videoId, String json) throws ParseException, IOException {
+    public YouTubeVideo parseYouTubeVideoFromJson(final String videoId, final String json) throws ParseException, IOException {
         final ImplYouTubeVideo video = new ImplYouTubeVideo(videoId);
         video.parse(apiKey, json);
 
@@ -60,7 +60,7 @@ public final class YouTubeVideoParser {
     /**
      * @param apiKey the google api key
      */
-    public void setApiKey(String apiKey) {
+    public void setApiKey(final String apiKey) {
         this.apiKey = apiKey;
     }
 }

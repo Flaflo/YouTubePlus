@@ -1,7 +1,6 @@
 package xyz.flaflo.ytp.util;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,7 +11,7 @@ import java.nio.charset.Charset;
 /**
  * Utilities for HTTPRequests
  *
- * @author Cydhra, Flaflo
+ * @author Cydhra
  */
 public final class WebUtil {
 
@@ -21,39 +20,6 @@ public final class WebUtil {
      */
     private WebUtil() {
 
-    }
-    
-    public static byte[] getBytes(final String targetURL) {
-          HttpURLConnection connection = null;
-
-        try {
-            //Create connection
-            final URL url = new URL(targetURL);
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setRequestProperty("Content-Type",
-                    "application/x-www-form-urlencoded");
-
-            connection.setRequestProperty("user-agent", "YouTubePlus-User-Agent");
-            connection.setRequestProperty("Content-Language", "en-US");
-            connection.setRequestProperty("Content-Length", "0");
-
-            connection.setUseCaches(false);
-            connection.setDoOutput(false);
-
-            //Get Response
-            final DataInputStream dis = new DataInputStream(connection.getInputStream());
-            final byte[] bytes = new byte[dis.available()];
-            dis.readFully(bytes);
-            return bytes;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new byte[0];
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
-        }
     }
 
     /**
