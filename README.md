@@ -84,12 +84,10 @@ A compiled version can be found under the GitHub releases.
 Just add this repository and dependency to your pom file:
 
 ```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io/</url>
-    </repository>
-</repositories>
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io/</url>
+</repository>
 ```
 ```xml
 <dependency>
