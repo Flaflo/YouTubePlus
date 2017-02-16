@@ -1,7 +1,7 @@
 # YouTubePlus
 A YouTube Library
 
-# Playlists
+## Playlists
 To parse a ``YouTubePlaylist`` you use the ``YouTubePlaylistParser``:
 ```Java
 final YouTubePlaylistParser playlistParser = new YouTubePlaylistParser("GOOGLE_API_KEY");
@@ -9,7 +9,7 @@ final YouTubePlaylist playlist = playlistParser.parsePlaylist("PLAYLIST_ID");
 ```
 You can get various informations from a Playlist.
 As example you can get all ``YouTubeVideo``s contained in a ``YouTubePlaylist`` by iterating through it like a ``java.util.List``.
-# Videos
+## Videos
 To parse a ``YouTubeVideo`` you use the ``YouTubeVideoParser``:
 ```Java
 final YouTubeVideoParser videoParser = new YouTubeVideoParser("GOOGLE_API_KEY");
@@ -21,7 +21,7 @@ To get it use its getter:
 final YouTubeVideoInfo videoInfo = video.getInfo();
 ```
 
-# Video Informations
+## Video Informations
 To get a ``YouTubeVideoInfo`` you can either get it through a ``YouTubeVideo`` as shown above or through the ``YouTubeVideoInfoProvider``:
 ```Java
 final YouTubeVideoInfoProvider infoProvider = new YouTubeVideoInfoProvider("GOOGLE_API_KEY");
@@ -54,7 +54,7 @@ final String[] tags = info.getTags();
 final String videoId = info.getVideoId();
 ```
 
-# Thumbnails
+## Thumbnails
 To get a ``YouTubeThumbnail`` you use the ``YouTubeThumbnailParser``, this will return a ``YouTubeThumbnailContainer`` which contains all thumbnails in their resolutions. You can get them by providing a ``YouTubeThumbnailFormat``:
 ```Java
 final YouTubeThumbnailParser thumbnailParser = new YouTubeThumbnailParser("GOOGLE_API_KEY");
@@ -73,4 +73,26 @@ final Image image = thumbnail.getImage();
 You can also create thumbnail objects by an url or image object you provide in the ``YouTubeThumbnailParser``:
 ```Java
 final YouTubeThumbnail createdThumbnail = thumbnailParser.createThumbnail(URL_OR_IMAGE);
+```
+
+## Download
+
+A compiled version can be found under the GitHub releases.
+
+### Maven
+
+Just add this repository and dependency to your pom file:
+
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io/</url>
+</repository>
+```
+```xml
+<dependency>
+    <groupId>com.github.flaflo</groupId>
+    <artifactId>YouTubePlus</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
