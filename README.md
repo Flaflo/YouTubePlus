@@ -93,6 +93,6 @@ Just add this repository and dependency to your pom file:
 <dependency>
     <groupId>com.github.flaflo</groupId>
     <artifactId>YouTubePlus</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
