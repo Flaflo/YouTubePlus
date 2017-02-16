@@ -28,7 +28,7 @@ final class ImplYouTubePlaylist extends ArrayList<YouTubeVideo> implements YouTu
     /**
      * The API URL template
      */
-    private static final String YOUTUBE_API_PLAYLIST = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=%s&key=%s";
+    private static final String YOUTUBE_API_PLAYLIST = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=%s&playlistId=%s&key=%s";
 
     private final String playlistId;
 
