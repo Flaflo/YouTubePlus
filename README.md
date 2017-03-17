@@ -53,6 +53,10 @@ final String[] tags = info.getTags();
 ```Java
 final String videoId = info.getVideoId();
 ```
+* The video id
+```Java
+final String videoFile = info.getVideoFile();
+```
 
 ## Thumbnails
 To get a ``YouTubeThumbnail`` you use the ``YouTubeThumbnailParser``, this will return a ``YouTubeThumbnailContainer`` which contains all thumbnails in their resolutions. You can get them by providing a ``YouTubeThumbnailFormat``:
