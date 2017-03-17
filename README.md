@@ -53,6 +53,10 @@ final String[] tags = info.getTags();
 ```Java
 final String videoId = info.getVideoId();
 ```
+* The video id
+```Java
+final String videoFile = info.getVideoFile();
+```
 
 ## Thumbnails
 To get a ``YouTubeThumbnail`` you use the ``YouTubeThumbnailParser``, this will return a ``YouTubeThumbnailContainer`` which contains all thumbnails in their resolutions. You can get them by providing a ``YouTubeThumbnailFormat``:
@@ -93,6 +97,6 @@ Just add this repository and dependency to your pom file:
 <dependency>
     <groupId>com.github.flaflo</groupId>
     <artifactId>YouTubePlus</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
