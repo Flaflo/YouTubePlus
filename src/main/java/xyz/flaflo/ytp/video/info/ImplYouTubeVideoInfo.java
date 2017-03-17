@@ -16,6 +16,7 @@ import xyz.flaflo.ytp.util.WebUtil;
 final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
 
     private static final String YOUTUBE_API_VIDEO_INFO = "https://www.googleapis.com/youtube/v3/videos?id=%s&key=%s&part=snippet";
+    private static final String HELLOACM_GET_STREAM_API = "https://helloacm.com/api/video/?cached&video=%s";
 
     private String videoId;
 
@@ -26,6 +27,8 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
     private String channelId;
 
     private String description;
+
+    private String videoFile;
 
     private String[] tags;
 
@@ -65,14 +68,14 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
             for (Object obj : items) {
                 if (obj instanceof JSONObject) {
                     final JSONObject item = (JSONObject) obj;
-                    
+
                     if (item.containsKey("snippet")) {
                         snippet = item.getJSONObject("snippet");
                     }
                 }
             }
         }
-        
+
         if (snippet != null) {
             if (snippet.containsKey("publishedAt")) {
                 final Date publishedAt = ISO8601DateParser.parse(snippet.getString("publishedAt"));
@@ -108,6 +111,8 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
                 }
             }
         }
+        
+        this.videoFile = JSONObject.fromObject(WebUtil.getWebContent(String.format(HELLOACM_GET_STREAM_API, "https://www.youtube.com/watch?v=" + this.videoId))).getString("url");
     }
 
     @Override
@@ -138,5 +143,10 @@ final class ImplYouTubeVideoInfo implements YouTubeVideoInfo {
     @Override
     public String[] getTags() {
         return tags;
+    }
+
+    @Override
+    public String getVideoFile() {
+        return videoFile;
     }
 }

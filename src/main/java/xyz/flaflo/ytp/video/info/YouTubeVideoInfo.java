@@ -39,4 +39,8 @@ public interface YouTubeVideoInfo {
      */
     String getVideoId();
 
+    /**
+     * @return the url to video file
+     */
+    String getVideoFile();
 }
