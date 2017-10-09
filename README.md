@@ -53,7 +53,7 @@ final String[] tags = info.getTags();
 ```Java
 final String videoId = info.getVideoId();
 ```
-* The video id
+* The video file
 ```Java
 final String videoFile = info.getVideoFile();
 ```
