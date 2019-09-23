@@ -1,4 +1,4 @@
-# YouTubePlus
+# YouTubePlus OUTDATED!
 A YouTube Library
 
 ## Playlists
